@@ -13,21 +13,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Anuj Kothiyal",
-  "jobTitle": "Data Engineer",
-  "url": "https://anujkothiyal.com",
-  "sameAs": [
-    "https://www.linkedin.com/in/anujkothiyal",
-    "https://github.com/anujkothiyal01",
-    "https://www.youtube.com/@anujkothiyal",
-    "https://medium.com/@anujkothiyal"
-  ]
-}
-</script>
-
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Anuj Kothiyal",
+      "jobTitle": "Data Engineer",
+      "url": "https://anujkothiyal.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/anujkothiyal",
+        "https://github.com/anujkothiyal01",
+        "https://www.youtube.com/@anujkothiyal",
+        "https://medium.com/@anujkothiyal",
+        "https://www.youtube.com/@anujkothiyalDE",
+        "https://www.kaggle.com/anujkothiyal"
+      ]
+    }
+  </script>
 
   <style>
     :root {
@@ -51,7 +52,20 @@
       overflow-x: hidden;
     }
 
-    /* Gradient Orbs for Background */
+    /* Background Shrink & Animation */
+    body::before {
+      content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 60%);
+      z-index: -1;
+      animation: shrinkBg 8s infinite alternate ease-in-out;
+    }
+
+    @keyframes shrinkBg {
+      0% { transform: scale(1.2); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 0.4; }
+    }
+
+    /* Gradient Orbs */
     .orb {
       position: fixed;
       width: 400px;
@@ -84,22 +98,31 @@
     }
 
     .nav-logo { font-size: 1.2rem; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 2px; }
+    
     .nav-links { display: flex; gap: 2rem; }
     .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
     .nav-links a:hover { color: var(--accent); }
 
+    /* Mobile Menu Toggle */
+    .menu-btn { display: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+
     .container { max-width: 1100px; margin: auto; padding: 0 24px; }
 
-    /* Hero */
-    .hero { padding: 180px 0 100px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
-    .hero-content h1 { font-size: clamp(3rem, 8vw, 5rem); font-weight: 800; line-height: 1; margin-bottom: 1.5rem; letter-spacing: -2px; }
-    .hero-content .subtitle { font-size: 1.25rem; color: var(--muted); margin-bottom: 2rem; max-width: 600px; }
+    /* Hero - Desktop Side-by-Side */
+    .hero { 
+      padding: 180px 0 100px; 
+      display: grid; 
+      grid-template-columns: 1.2fr 0.8fr; 
+      gap: 40px; 
+      align-items: center; 
+    }
+    .hero-content { text-align: left; }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -2px; }
+    .hero-content .subtitle { font-size: 1.2rem; color: var(--muted); margin-bottom: 2.5rem; max-width: 600px; }
     .highlight { color: var(--accent); background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
     .hero-img {
-      position: relative;
-      width: 320px; height: 320px;
-      margin: auto;
+      position: relative; width: 320px; height: 320px; margin: auto;
     }
     .hero-img img { 
       width: 100%; height: 100%; object-fit: cover; 
@@ -112,39 +135,32 @@
       100% { border-radius: 50%; }
     }
 
+    /* Stats Grid */
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 40px; }
+    .stat-card { text-align: center; padding: 20px 10px; background: rgba(255,255,255,0.03); border-radius: 16px; border: 1px solid var(--border); }
+    .stat-card h4 { font-size: 1.5rem; color: var(--accent); margin-bottom: 5px; }
+    .stat-card p { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; }
+
     /* Section Styling */
-    section { padding: 100px 0; }
-    h2 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 4px; color: var(--accent); margin-bottom: 2rem; }
+    section { padding: 80px 0; }
+    h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 4px; color: var(--accent); margin-bottom: 2.5rem; display: flex; align-items: center; gap: 15px; }
+    h2::after { content: ""; height: 1px; background: var(--border); flex: 1; }
 
     .card {
-      background: var(--card);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 40px;
-      transition: 0.4s ease;
+      background: var(--card); backdrop-filter: blur(10px);
+      border: 1px solid var(--border); border-radius: 24px;
+      padding: 30px; transition: 0.4s ease;
     }
     .card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: var(--glow); }
 
-    /* Stats Section */
-    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
-    .stat-card { text-align: center; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 16px; border: 1px solid var(--border); }
-    .stat-card h4 { font-size: 2rem; color: var(--accent); margin-bottom: 5px; }
-    .stat-card p { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; }
-
-    /* Skills Cloud */
+    /* Skills */
     .skill-tag {
-      display: inline-block;
-      padding: 8px 16px;
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.2);
-      border-radius: 8px;
-      font-size: 0.85rem;
-      margin: 4px;
-      color: var(--accent);
+      display: inline-block; padding: 8px 16px; background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px;
+      font-size: 0.85rem; margin: 4px; color: var(--accent);
     }
 
-    /* Experience Timeline */
+    /* Experience */
     .timeline { border-left: 1px solid var(--border); padding-left: 30px; }
     .milestone { position: relative; margin-bottom: 50px; }
     .milestone::before {
@@ -153,11 +169,35 @@
       box-shadow: 0 0 10px var(--accent);
     }
 
-    /* Responsive */
+    /* Blogs */
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .blog-card { overflow: hidden; height: 100%; display: flex; flex-direction: column; }
+    .blog-img-box { height: 200px; overflow: hidden; position: relative; }
+    .blog-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+    .blog-card:hover .blog-img-box img { transform: scale(1.1); }
+
+    /* Responsive Logic */
     @media (max-width: 992px) {
       .hero { grid-template-columns: 1fr; text-align: center; padding-top: 140px; }
-      .stats-grid { grid-template-columns: 1fr; }
+      .hero-img { margin: 0 auto 40px; width: 280px; height: 280px; order: -1; }
+      .hero-content { text-align: center; }
+      .stats-grid { gap: 10px; }
     }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .nav-links {
+        display: none; position: absolute; top: 100%; left: 0; width: 100%;
+        flex-direction: column; background: var(--bg); padding: 20px;
+        text-align: center; border-bottom: 1px solid var(--border);
+      }
+      .nav-links.active { display: flex; }
+      .stats-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2.5rem; }
+      section { padding: 50px 0; }
+    }
+
+    footer { text-align: center; padding: 60px 0; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
   </style>
 </head>
 <body>
@@ -167,18 +207,20 @@
 
   <nav class="navbar">
     <div class="nav-container">
-      <div class="nav-logo">AK.ENG</div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#certifications">Credentials</a>
-        <a href="#cta">Contact</a>
+      <!-- <div class="nav-logo">AK.ENG</div> -->
+      <div class="nav-logo">ANUJ KOTHIYAL</div>
+      <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+      <div class="nav-links" id="navLinks">
+        <a href="#about" onclick="toggleMenu()">About</a>
+        <a href="#experience" onclick="toggleMenu()">Experience</a>
+        <a href="#certifications" onclick="toggleMenu()">Credentials</a>
+        <a href="#writing" onclick="toggleMenu()">Writing</a>
       </div>
     </div>
   </nav>
 
   <div class="container">
-    <section class="hero">
+    <section class="hero" id="about">
       <div class="hero-content">
         <h1>Anuj <span class="highlight">Kothiyal</span></h1>
         <p class="subtitle">
@@ -186,34 +228,34 @@
           I believe the best way to master Snowflake and AWS is to build, break, and teach.
         </p>
         <div class="stats-grid">
-          <div class="stat-card"><h4>1+</h4><p>Years Experience</p></div>
+          <!-- <div class="stat-card"><h4>1+</h4><p>Years Experience</p></div>
           <div class="stat-card"><h4>100M+</h4><p>Rows Processed Daily</p></div>
-          <div class="stat-card"><h4>$10k+</h4><p>Cloud Costs Saved</p></div>
+          <div class="stat-card"><h4>$10k+</h4><p>Cloud Costs Saved</p></div> -->
         </div>
-        <a href="mailto:your-email@example.com" class="btn-main" style="background:var(--accent); color:#000; padding:16px 40px; border-radius:12px; text-decoration:none; font-weight:800; display:inline-block">Watch My Tutorials</a>
+        <a href="https://www.youtube.com/@anujkothiyal" target="_blank" class="card" style="display:inline-block; padding:14px 32px; border-radius:12px; text-decoration:none; font-weight:800; background:var(--accent); color:#000;">Watch My Tutorials</a>
       </div>
       <div class="hero-img">
-        <img src="images/dp.jpeg" alt="Anuj Kothiyal">
+        <img src="images/dp.jpeg" alt="Anuj Kothiyal - Data Engineer">
       </div>
     </section>
 
     <section id="certifications">
       <h2>Vetted Expertise</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+      <div class="blog-grid">
         <div class="card" style="border-top: 4px solid var(--accent);">
           <i class="fas fa-snowflake" style="font-size: 2rem; color: var(--accent); margin-bottom: 20px;"></i>
           <h3>SnowPro® Core</h3>
-          <p style="color:var(--muted); font-size:0.9rem;">Validated expert in Snowflake Data Cloud Architecture, RBAC Security, and Warehouse Optimization.</p>
+          <p style="color:var(--muted); font-size:0.9rem;">Expert in Snowflake Data Cloud Architecture, RBAC Security, and Warehouse Optimization.</p>
         </div>
         <div class="card" style="border-top: 4px solid #FF9900;">
           <i class="fab fa-aws" style="font-size: 2rem; color: #FF9900; margin-bottom: 20px;"></i>
           <h3>AWS Certified</h3>
-          <p style="color:var(--muted); font-size:0.9rem;">Cloud Practitioner specializing in serverless ingestion (Lambda, S3, Glue) and Shared Responsibility security.</p>
+          <p style="color:var(--muted); font-size:0.9rem;">Cloud Practitioner specializing in serverless ingestion (Lambda, S3, Glue).</p>
         </div>
         <div class="card" style="border-top: 4px solid #0089D6;">
           <i class="fab fa-microsoft" style="font-size: 2rem; color: #0089D6; margin-bottom: 20px;"></i>
           <h3>Azure Fundamentals</h3>
-          <p style="color:var(--muted); font-size:0.9rem;">DP-900 Certified in Relational and NoSQL data structures within the Azure ecosystem.</p>
+          <p style="color:var(--muted); font-size:0.9rem;">DP-900 Certified in relational and NoSQL structures on Azure.</p>
         </div>
       </div>
     </section>
@@ -226,8 +268,8 @@
           <p style="font-size: 0.85rem; color: var(--accent); margin-bottom: 10px;">Oct 2025 — Present</p>
           <div class="card">
             <ul style="list-style: none; font-size: 0.95rem; color: var(--muted);">
-              <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color:var(--accent)"></i> Orchestrated Snowflake migration for legacy SQL Server workloads, improving query performance by <strong>300%</strong>.</li>
-              <li><i class="fas fa-check-circle" style="color:var(--accent)"></i> Implemented incremental dbt models, reducing warehouse compute costs by <strong>$12k/quarter</strong>.</li>
+              <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color:var(--accent)"></i> Orchestrated Snowflake migration for legacy SQL Server workloads.</li>
+              <li><i class="fas fa-check-circle" style="color:var(--accent)"></i> Implemented incremental dbt models, reducing compute costs by <strong>$12k/quarter</strong>.</li>
             </ul>
           </div>
         </div>
@@ -237,7 +279,7 @@
           <p style="font-size: 0.85rem; color: var(--accent); margin-bottom: 10px;">March 2025 — Oct 2025</p>
           <div class="card">
             <ul style="list-style: none; font-size: 0.95rem; color: var(--muted);">
-              <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color:var(--accent)"></i> Built serverless AWS data lakes (S3/Glue) processing <strong>100M+ events/day</strong> for US retail analytics.</li>
+              <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color:var(--accent)"></i> Built serverless AWS data lakes processing <strong>100M+ events/day</strong>.</li>
               <li><i class="fas fa-check-circle" style="color:var(--accent)"></i> Developed CI/CD pipelines for data using Terraform and GitHub Actions.</li>
             </ul>
           </div>
@@ -246,81 +288,67 @@
     </section>
 
     <section id="toolbox">
-      <h2>The Stack</h2>
+      <h2>Technical Stack</h2>
       <div class="card">
         <div style="margin-bottom: 30px;">
-          <h4 style="margin-bottom: 15px; font-size: 0.8rem; color: var(--muted);">PRIMARY STACK</h4>
-          <span class="skill-tag">Snowflake (Expert)</span>
-          <span class="skill-tag">Python (Pandas/PySpark)</span>
+          <h4 style="margin-bottom: 15px; font-size: 0.8rem; color: var(--muted);">PRIMARY ENGINE</h4>
+          <span class="skill-tag">Snowflake</span>
+          <span class="skill-tag">Python (Pandas)</span>
           <span class="skill-tag">dbt Core/Cloud</span>
           <span class="skill-tag">AWS (S3, Glue, Lambda)</span>
-          <span class="skill-tag">SQL (Advanced)</span>
+          <span class="skill-tag">SQL</span>
         </div>
         <div>
-          <h4 style="margin-bottom: 15px; font-size: 0.8rem; color: var(--muted);">ORCHESTRATION & BI</h4>
+          <h4 style="margin-bottom: 15px; font-size: 0.8rem; color: var(--muted);">OPS & ARCHITECTURE</h4>
           <span class="skill-tag">Airflow</span>
-          <span class="skill-tag">Prefect</span>
-          <span class="skill-tag">Power BI</span>
           <span class="skill-tag">Terraform</span>
+          <span class="skill-tag">GitHub Actions</span>
+          <span class="skill-tag">Power BI</span>
         </div>
       </div>
     </section>
 
     <section id="writing">
-      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem;">
-        <div>
-          <h2>Technical Insights</h2>
-          <p style="color: var(--muted); margin-top: -1.5rem;">Sharing my journey in modern data architecture and cloud engineering.</p>
-        </div>
-        <a href="https://medium.com/@anujkothiyal" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; font-weight: 600;">View All Posts <i class="fas fa-arrow-right"></i></a>
-      </div>
-
-      <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
-        
-        <div class="blog-card" style="background: var(--card); border-radius: 20px; border: 1px solid var(--border); overflow: hidden; transition: 0.4s;">
-          <div style="height: 200px; overflow: hidden; position: relative;">
-            <div style="position: absolute; top: 15px; left: 15px; background: var(--accent); color: #000; padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; z-index: 10;">SNOWFLAKE</div>
-            <img src="https://miro.medium.com/v2/resize:fit:1400/1*wU8zLMXNafwMdPjwwpvzZw.png" alt="Snowflake dbt Python" style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;">
+      <h2>Technical Writing</h2>
+      <div class="blog-grid">
+        <div class="card blog-card">
+          <div class="blog-img-box">
+             <div style="position: absolute; top: 10px; left: 10px; background: var(--accent); color: #000; padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; z-index: 5;">SNOWFLAKE</div>
+             <img src="https://miro.medium.com/v2/resize:fit:1400/1*wU8zLMXNafwMdPjwwpvzZw.png" alt="Snowflake dbt blog">
           </div>
-          <div style="padding: 25px;">
-            <p style="font-size: 0.75rem; color: var(--accent); margin-bottom: 10px; font-weight: 600;">Feb 2026 • 8 min read</p>
-            <h3 style="margin-bottom: 12px; font-size: 1.2rem; line-height: 1.4;">Bridging Data Engineering with dbt, Python & Snowpark</h3>
-            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Exploring how to leverage Python-based transformations directly inside the Snowflake engine for ML-ready datasets.</p>
-            <a href="https://medium.com/@anujkothiyal" target="_blank" style="color: #fff; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">Read Full Article <i class="fas fa-external-link-alt" style="font-size: 0.8rem; color: var(--accent);"></i></a>
+          <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+            <h3>Bridging dbt & Snowflake</h3>
+            <p style="font-size: 0.85rem; color: var(--muted); margin: 10px 0 20px;">Practical implementation of Medallion Architecture using Snowpark.</p>
+            <a href="https://medium.com/@anujkothiyal" target="_blank" style="margin-top:auto; color: var(--accent); text-decoration: none; font-weight: 700;">Read on Medium →</a>
           </div>
         </div>
 
-        <div class="blog-card" style="background: var(--card); border-radius: 20px; border: 1px solid var(--border); overflow: hidden; transition: 0.4s;">
-          <div style="height: 200px; overflow: hidden; position: relative;">
-            <div style="position: absolute; top: 15px; left: 15px; background: #FF9900; color: #000; padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; z-index: 10;">AWS ARCHITECTURE</div>
-            <img src="https://miro.medium.com/v2/resize:fit:1400/1*XgN8rCuJRLftc3F3SaloBw.png" alt="AWS Data Pipelines" style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;">
+        <div class="card blog-card">
+          <div class="blog-img-box">
+             <div style="position: absolute; top: 10px; left: 10px; background: #FF9900; color: #000; padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; z-index: 5;">AWS</div>
+             <img src="https://miro.medium.com/v2/resize:fit:1400/1*XgN8rCuJRLftc3F3SaloBw.png" alt="AWS Data Pipelines">
           </div>
-          <div style="padding: 25px;">
-            <p style="font-size: 0.75rem; color: #FF9900; margin-bottom: 10px; font-weight: 600;">Jan 2026 • 12 min read</p>
-            <h3 style="margin-bottom: 12px; font-size: 1.2rem; line-height: 1.4;">Building Production-Grade Pipelines: S3 + Glue + Snowflake</h3>
-            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">A deep dive into the Medallion Architecture and automating data quality checks using AWS EventBridge and Lambda.</p>
-            <a href="https://medium.com/@anujkothiyal" target="_blank" style="color: #fff; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">Read Full Article <i class="fas fa-external-link-alt" style="font-size: 0.8rem; color: #FF9900;"></i></a>
+          <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+            <h3>Production AWS Pipelines</h3>
+            <p style="font-size: 0.85rem; color: var(--muted); margin: 10px 0 20px;">Building reliable ingestion layers with S3 and Lambda.</p>
+            <a href="https://medium.com/@anujkothiyal" target="_blank" style="margin-top:auto; color: var(--accent); text-decoration: none; font-weight: 700;">Read on Medium →</a>
           </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section id="cta" style="text-align: center;">
-      <div class="card" style="background: linear-gradient(rgba(56,189,248,0.1), transparent); border: 1px solid var(--accent);">
-        <h2 style="justify-content: center; border: none; font-size: 2.5rem; margin-bottom: 10px; color: #fff;">Let's Build Something Scalable</h2>
-        <p style="margin-bottom: 30px; color: var(--muted);">Currently accepting consulting invitations for 2026 architectural audits and platform migrations.</p>
-        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-          <a href="https://linkedin.com/in/anujkothiyal" class="btn-main" style="background:#fff; color:#000; padding:14px 30px; border-radius:10px; text-decoration:none; font-weight:700;">LinkedIn</a>
-          <a href="https://youtube.com/@anujkothiyal" class="btn-main" style="background:transparent; border:1px solid var(--accent); color:var(--accent); padding:14px 30px; border-radius:10px; text-decoration:none; font-weight:700;">YouTube Tech Tutorials</a>
         </div>
       </div>
     </section>
 
     <footer>
-      <p style="padding-bottom: 40px;">© 2026 Anuj Kothiyal – Data Engineer | Remote • India ↔ US</p>
+      <p style="padding-bottom: 40px;">© 2026 Anuj Kothiyal – Data Engineer.</p>
     </footer>
   </div>
 
+  <script>
+    function toggleMenu() {
+      const links = document.getElementById('navLinks');
+      if (window.innerWidth <= 768) {
+        links.classList.toggle('active');
+      }
+    }
+  </script>
 </body>
 </html>
